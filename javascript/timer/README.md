@@ -10,9 +10,9 @@ Basic functionalities needed:
 - [ ] timer end (color change)
 
 Nice to have:
+- [ ] user-set duration
+- [ ] multiple timers
 - [ ] reverse timer (count up)
-- [ ] play sound on timer end
-- [ ] mute sound
 
 
 Note: I will not be styling this past what is necessary to check it works.
