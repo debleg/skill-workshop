@@ -4,7 +4,7 @@ const timerCreateButton = document.getElementById("create-timer");
 //add a cap to the number of timers that can be created? With a countdown somewhere like 'you can add X more timers'
 
 // Put an event listener on the create button
-timerCreateButton.addEventListener("click", createTimer);
+timerCreateButton.addEventListener("click", checkTimerDuration);
 // Get the timer container div
 const timerContainer = document.getElementById("timer-container");
 // On create button click, create a timer in the container div
@@ -14,7 +14,17 @@ const timerContainer = document.getElementById("timer-container");
 // a button for play/pause
 // a stop/reset button, inactive on creation
 // numbers for countdown
-function createTimer() {
+function checkTimerDuration () {
+  const timerDuration = document.getElementById("timer-duration").value;
+  if (timerDuration > 0) {
+    createTimer(timerDuration)
+  } else {
+    const timerDurationSetter = document.getElementById("timer-duration")
+    timerDurationSetter.value = 0;
+  }
+}
+
+function createTimer(timerDuration) {
   const myNewTimer = document.createElement("div");
   const actionButton = document.createElement("button");
   actionButton.innerText = "Play";
@@ -26,7 +36,7 @@ function createTimer() {
 
   //this needs to be the time set/entered by the user, the play happens later
   const timeElapsing = document.createElement("span");
-  timeElapsing.innerText = "00:00";
+  timeElapsing.innerText = `${timerDuration}:00`; //there's a way to make it two digits with padStart, but since I might get in the 3 digit minutes/need hours later, sticking with the basics here
 
   myNewTimer.appendChild(actionButton);
   myNewTimer.appendChild(resetButton);
@@ -51,6 +61,7 @@ function createTimer() {
   function resetTimer() {
     console.log("reset");
     resetButton.disabled = true;
+    timeElapsing.innerText = "00:00"
   }
 }
 
@@ -61,6 +72,6 @@ function createTimer() {
 //Functions needed: createTimer, launchTimer (playTimer?), pauseTimer, resumeTimer(?), resetTimer
 
 // Added complexity for later:
-// Let user set length
+// Let user set length ==> Done
 // Multiple timers (need some form of ids so controls work properly/target only their own timer)
 // Reverse timer (count up)

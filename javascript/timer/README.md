@@ -10,7 +10,7 @@ Basic functionalities needed:
 - [ ] timer end (color change)
 
 Nice to have:
-- [ ] user-set duration
+- [ X ] user-set duration
 - [ ] multiple timers
 - [ ] reverse timer (count up)
 
